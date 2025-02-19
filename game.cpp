@@ -1,5 +1,6 @@
 #include "game.h"
 #include "obstacle.h"
+
 #include <QKeyEvent>
 
 Game::Game(QWidget *parent) : QGraphicsView(parent) {
@@ -11,6 +12,8 @@ Game::Game(QWidget *parent) : QGraphicsView(parent) {
     player->setFlag(QGraphicsItem::ItemIsFocusable);  // Allow the item to receive focus
     player->setFocus();                                 // Set the focus on the player item
     player->setPos(50, scene->height() - 128);
+    frameManager = new FrameManager(player);
+    frameManager->setAction(Action::Jumping);
 
     addObstacles();
 

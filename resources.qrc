@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/sprites">
         <file>sprites/Converted_Vampire/Walk.png</file>
+        <file>sprites/Converted_Vampire/Run.png</file>
+        <file>sprites/Converted_Vampire/Jump.png</file>
+        <file>sprites/Converted_Vampire/Idle.png</file>
     </qresource>
 </RCC>
