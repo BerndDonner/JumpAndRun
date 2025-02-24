@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <QGraphicsPixmapItem>
+#include "framemanager.h"
+
 
 class Player : public QGraphicsPixmapItem {
 public:
@@ -13,6 +15,7 @@ public:
 private:
     bool jumping;
     int velocityY;
+    FrameManager *frameManager;
 };
 
 

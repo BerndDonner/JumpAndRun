@@ -11,9 +11,6 @@ Game::Game(QWidget *parent) : QGraphicsView(parent) {
     scene->addItem(player);
     player->setFlag(QGraphicsItem::ItemIsFocusable);  // Allow the item to receive focus
     player->setFocus();                                 // Set the focus on the player item
-    frameManager = new FrameManager(player);
-    frameManager->setAction(Action::Walking);
-
     player->setPos(50, scene->height() - 128);
 
     addObstacles();
@@ -26,7 +23,6 @@ Game::Game(QWidget *parent) : QGraphicsView(parent) {
 void Game::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Space) {
         player->jump();
-        frameManager->setAction(Action::Jumping);
     }
     QGraphicsView::keyPressEvent(event);  // Call base class if needed
 }

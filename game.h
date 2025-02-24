@@ -5,7 +5,6 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include "player.h"
-#include "framemanager.h"
 
 
 class Game : public QGraphicsView {
@@ -19,7 +18,6 @@ protected:
 private:
     QGraphicsScene *scene;
     Player *player;
-    FrameManager *frameManager;
     QTimer *gameTimer;
     void setupScene();
     void addObstacles();
