@@ -1,4 +1,5 @@
 #include "framemanager.h"
+#include <cassert>
 
 
 FrameManager::FrameManager(QGraphicsPixmapItem *player)
@@ -9,6 +10,10 @@ FrameManager::FrameManager(QGraphicsPixmapItem *player)
     sprites[Action::Walking] = new Sprite(":/sprites/sprites/Converted_Vampire/Walk.png", 8);
     sprites[Action::Running] = new Sprite(":/sprites/sprites/Converted_Vampire/Run.png", 8);
     sprites[Action::Jumping] = new Sprite(":/sprites/sprites/Converted_Vampire/Jump.png", 7);
+
+    assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Walking]->getFrameSize());
+    assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Running]->getFrameSize());
+    assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Jumping]->getFrameSize());
 
     // Set initial sprite
     player->setPixmap(sprites[currentAction]->getFirstFrame());

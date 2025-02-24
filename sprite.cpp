@@ -6,13 +6,12 @@ Sprite::Sprite(const QString &fileName, size_t totalFrames)
     QPixmap spriteSheet(fileName);
 
     // Preload all frames
-    size_t frameWidth  = spriteSheet.width() / totalFrames;
-    size_t frameHeight = spriteSheet.height();
+    frameSize = QSize(spriteSheet.width() / totalFrames, spriteSheet.height());
 
     for (size_t i = 0; i < totalFrames; ++i) {
-        size_t x = (i % totalFrames) * frameWidth;
+        size_t x = (i % totalFrames) * frameSize.width();
         size_t y = 0;
-        frames.append(spriteSheet.copy(x, y, frameWidth, frameHeight));
+        frames.append(spriteSheet.copy(x, y, frameSize.width(), frameSize.height()));
     }
 }
 
@@ -26,4 +25,8 @@ QPixmap Sprite::getFirstFrame() {
 QPixmap Sprite::getNextFrame() {
     currentFrame = (currentFrame + 1) % totalFrames;
     return frames[currentFrame];
+}
+
+QSize Sprite::getFrameSize() const {
+    return frameSize;
 }

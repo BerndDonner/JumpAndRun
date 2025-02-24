@@ -16,8 +16,8 @@ void Player::advance(int step) {
     if (jumping) {
         velocityY += 1; // Schwerkraft
         moveBy(0, velocityY);
-        if (y() >= 400-128) {         //TODO scene->height() - 128
-            jumping = false;
+        if (y() >= 400-128) {         //TODO: scene->height() - 128
+            jumping = false;          //TODO: signal that the jump is finished
             velocityY = 0;
             setY(400-128);            // Bodenposition TODO scene->height() - 128
         }
