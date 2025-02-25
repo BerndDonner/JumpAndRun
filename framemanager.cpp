@@ -10,10 +10,13 @@ FrameManager::FrameManager(QGraphicsPixmapItem *player)
     sprites[Action::Walking] = new Sprite(":/sprites/sprites/Converted_Vampire/Walk.png", 8);
     sprites[Action::Running] = new Sprite(":/sprites/sprites/Converted_Vampire/Run.png", 8);
     sprites[Action::Jumping] = new Sprite(":/sprites/sprites/Converted_Vampire/Jump.png", 7);
+    sprites[Action::Dead]    = new Sprite(":/sprites/sprites/Converted_Vampire/Dead.png", 8, false);
 
     assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Walking]->getFrameSize());
     assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Running]->getFrameSize());
     assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Jumping]->getFrameSize());
+    assert(sprites[Action::Idle]->getFrameSize() == sprites[Action::Dead]->getFrameSize());
+    frameSize = sprites[Action::Idle]->getFrameSize();
 
     // Set initial sprite
     player->setPixmap(sprites[currentAction]->getFirstFrame());
@@ -22,6 +25,10 @@ FrameManager::FrameManager(QGraphicsPixmapItem *player)
     animationTimer = new QTimer(this);
     connect(animationTimer, &QTimer::timeout, this, &FrameManager::updateFrame);
     animationTimer->start(frameDelayMs);
+}
+
+QSize FrameManager::getFrameSize() const {
+    return frameSize;
 }
 
 FrameManager::~FrameManager() {

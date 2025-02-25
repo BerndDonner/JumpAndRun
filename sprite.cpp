@@ -1,7 +1,7 @@
 #include "sprite.h"
 
-Sprite::Sprite(const QString &fileName, size_t totalFrames)
-    : totalFrames(totalFrames), currentFrame(0) {
+Sprite::Sprite(const QString &fileName, size_t totalFrames, bool l)
+    : totalFrames(totalFrames), currentFrame(0), loop(l) {
 
     QPixmap spriteSheet(fileName);
 
@@ -23,7 +23,11 @@ QPixmap Sprite::getFirstFrame() {
 
 
 QPixmap Sprite::getNextFrame() {
-    currentFrame = (currentFrame + 1) % totalFrames;
+    currentFrame = currentFrame + 1;
+
+    if (loop == true) currentFrame = currentFrame % totalFrames;
+    else if (currentFrame >= totalFrames) currentFrame = (totalFrames - 1);
+
     return frames[currentFrame];
 }
 

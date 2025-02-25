@@ -28,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         resources.qrc
         sprite.h sprite.cpp
         framemanager.h framemanager.cpp
+        gamescene.h gamescene.cpp
 
     )
 # Define target properties for Android with Qt 6 as:

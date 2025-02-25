@@ -4,5 +4,11 @@
         <file>sprites/Converted_Vampire/Run.png</file>
         <file>sprites/Converted_Vampire/Jump.png</file>
         <file>sprites/Converted_Vampire/Idle.png</file>
+        <file>sprites/Converted_Vampire/Attack_1.png</file>
+        <file>sprites/Converted_Vampire/Attack_2.png</file>
+        <file>sprites/Converted_Vampire/Attack_3.png</file>
+        <file>sprites/Converted_Vampire/Dead.png</file>
+        <file>sprites/Converted_Vampire/Hurt.png</file>
+        <file>sprites/Converted_Vampire/Protect.png</file>
     </qresource>
 </RCC>

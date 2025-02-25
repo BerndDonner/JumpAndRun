@@ -1,6 +1,10 @@
 #include "obstacle.h"
+#include <QBrush>
+#include <QPen>
 
 Obstacle::Obstacle() {
+    setBrush(QBrush(Qt::blue));
+    setPen(QPen(Qt::black));
     setRect(0, 0, 30, 30);
 }
 

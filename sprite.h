@@ -8,7 +8,7 @@
 
 class Sprite {
 public:
-    Sprite(const QString &fileName, size_t totalFrames);
+    Sprite(const QString &fileName, size_t totalFrames, bool l = true);
     QPixmap getFirstFrame();
     QPixmap getNextFrame();
     QSize getFrameSize() const;
@@ -18,6 +18,7 @@ private:
     size_t currentFrame;
     size_t totalFrames;
     QSize frameSize;
+    bool loop;
 };
 
 #endif // SPRITE_H

@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include "player.h"
+#include "gamescene.h"
 
 
 class Game : public QGraphicsView {
@@ -16,7 +17,7 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
 
 private:
-    QGraphicsScene *scene;
+    GameScene *scene;
     Player *player;
     QTimer *gameTimer;
     void setupScene();

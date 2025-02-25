@@ -11,7 +11,8 @@ enum class Action {
     Idle,
     Walking,
     Running,
-    Jumping
+    Jumping,
+    Dead
 };
 
 
@@ -20,6 +21,7 @@ class FrameManager : public QObject {
 public:
     FrameManager(QGraphicsPixmapItem *player);
     ~FrameManager();
+    QSize getFrameSize() const;
     void setAction(Action action);
 
 private slots:
@@ -31,6 +33,7 @@ private:
     QMap<Action, Sprite*> sprites;
     Action currentAction;
     const int frameDelayMs = 75;
+    QSize frameSize;
 };
 
 #endif // FRAMEMANAGER_H

@@ -4,19 +4,21 @@
 #include <QKeyEvent>
 
 Game::Game(QWidget *parent) : QGraphicsView(parent) {
-    scene = new QGraphicsScene(this);
+    scene = new GameScene(this);
     setupScene();
 
     player = new Player();
-    scene->addItem(player);
+    scene->addMovingItem(player);
     player->setFlag(QGraphicsItem::ItemIsFocusable);  // Allow the item to receive focus
     player->setFocus();                                 // Set the focus on the player item
     player->setPos(50, scene->height() - 128);
 
     addObstacles();
 
+    connect(scene, &GameScene::collisionDetected, player, &Player::handleCollision);
+
     gameTimer = new QTimer(this);
-    connect(gameTimer, &QTimer::timeout, scene, &QGraphicsScene::advance);
+    connect(gameTimer, &QTimer::timeout, scene, &GameScene::advance);
     gameTimer->start(16); // 60 FPS
 }
 
@@ -39,6 +41,6 @@ void Game::addObstacles() {
     for (int i = 1; i <= 3; i++) {
         Obstacle *obstacle = new Obstacle();
         obstacle->setPos(300 * i, scene->height() - 50);
-        scene->addItem(obstacle);
+        scene->addMovingItem(obstacle);
     }
 }
